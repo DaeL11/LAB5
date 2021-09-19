@@ -1,0 +1,5 @@
+0:0:0:0:0:0:0:1 - - [19/Sep/2021:11:52:47 -0500] "GET / HTTP/1.1" 200 52 http-bio-8080-exec-1 327
+0:0:0:0:0:0:0:1 - - [19/Sep/2021:11:52:56 -0500] "GET /helloServlet HTTP/1.1" 200 16 http-bio-8080-exec-3 1
+0:0:0:0:0:0:0:1 - - [19/Sep/2021:11:53:13 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8080-exec-4 2
+0:0:0:0:0:0:0:1 - - [19/Sep/2021:11:54:07 -0500] "GET /helloServlet HTTP/1.1" 200 16 http-bio-8080-exec-6 1
+0:0:0:0:0:0:0:1 - - [19/Sep/2021:11:56:08 -0500] "GET /helloServlet?name=Juan HTTP/1.1" 200 20 http-bio-8080-exec-8 0
