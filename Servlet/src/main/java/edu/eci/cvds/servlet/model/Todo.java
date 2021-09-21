@@ -3,7 +3,7 @@ package edu.eci.cvds.servlet.model;
 
 public class Todo {
     private int userId;
-    private int id;
+    private int id = 0;
     private String title;
     private boolean completed;
 
