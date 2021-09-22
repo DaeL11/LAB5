@@ -1,13 +1,16 @@
 package edu.eci.cvds.calculator;
 
 import java.util.ArrayList;
+
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean(name = "calculadoraBean")
-@ApplicationScoped
+@SessionScoped 
 public class CalculadoraBean {
-    private ArrayList<Double> lista;
+    private String lista;
+    private ArrayList<Double> arreglo;
     private double media;
     private double moda;
     private double desviacionEstandar;
@@ -17,9 +20,10 @@ public class CalculadoraBean {
 
     }
 
-    public ArrayList<Double> getLista() {
+    public String getLista() {
         return lista;
     }
+
     public double getMedia() {
         return media;
     }
@@ -33,11 +37,14 @@ public class CalculadoraBean {
         return varianza;
     }
 
+    public ArrayList<Double> getArreglo() {
+        return arreglo;
+    }
 
     public void setDesviacionEstandar(double desviacionEstandar) {
         this.desviacionEstandar = desviacionEstandar;
     }
-    public void setLista(ArrayList<Double> lista) {
+    public void setLista(String lista){
         this.lista = lista;
     }
     public void setMedia(double media) {
@@ -48,6 +55,15 @@ public class CalculadoraBean {
     }
     public void setVarianza(double varianza) {
         this.varianza = varianza;
+    }
+    public void setArreglo(String lista) {
+        lista = lista.strip();
+        ArrayList<Double>arreglo = new ArrayList<>();
+        String[]spli=lista.split(";");
+        for(String x : spli){
+            arreglo.add(Double.valueOf(x));
+        }
+        this.arreglo = arreglo;
     }
 
     public double calculateMean(ArrayList<Double> lista){
@@ -89,8 +105,20 @@ public class CalculadoraBean {
         return moda;
     }
 
+    public void calculateXXX(){
+        setArreglo((lista=="")?"0":lista);
+        moda = calculateMode(arreglo);
+        media = calculateMean(arreglo);
+        varianza = calculateVariance(arreglo);
+        desviacionEstandar = calculateStandardDeviation(arreglo);
+    }
+
     public void restart(){
-        
+        lista = "";
+        moda = 0;
+        media = 0;
+        varianza = 0;
+        desviacionEstandar = 0;
     }
 
 }
