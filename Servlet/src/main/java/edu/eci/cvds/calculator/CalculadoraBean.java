@@ -7,9 +7,10 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean(name = "calculadoraBean")
-@SessionScoped 
+@SessionScoped
 public class CalculadoraBean {
     private String lista;
+    private ArrayList<String> ingresados = new ArrayList<>();
     private ArrayList<Double> arreglo;
     private double media;
     private double moda;
@@ -17,11 +18,15 @@ public class CalculadoraBean {
     private double varianza;
 
     public CalculadoraBean(){
-
+        ingresados.clear();
     }
 
     public String getLista() {
         return lista;
+    }
+
+    public ArrayList<String> getIngresados() {
+        return ingresados;
     }
 
     public double getMedia() {
@@ -39,6 +44,10 @@ public class CalculadoraBean {
 
     public ArrayList<Double> getArreglo() {
         return arreglo;
+    }
+
+    public void setIngresados(ArrayList<String> ingresados) {
+        this.ingresados = ingresados;
     }
 
     public void setDesviacionEstandar(double desviacionEstandar) {
@@ -107,6 +116,7 @@ public class CalculadoraBean {
 
     public void calculateXXX(){
         setArreglo((lista=="")?"0":lista);
+        ingresados.add(lista);
         moda = calculateMode(arreglo);
         media = calculateMean(arreglo);
         varianza = calculateVariance(arreglo);

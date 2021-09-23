@@ -43,6 +43,16 @@
     <br></br>
     <p:commandButton value="reset" update="calculadora_form" actionListener="#{calculadoraBean.restart()}"></p:commandButton>
     <br></br>
+    <h:dataTable value="#{calculadoraBean.ingresados}"
+                    var="datos"  style="width: 600px;"
+                    rendered="#{calculadoraBean.ingresados.size()>0}">
+                <h:column>
+                    <f:facet name = "header">
+                        <h:outputLabel value="Listas Ingresadas"/>
+                    </f:facet>
+                    <h:outputLabel value="#{datos}"/>
+                </h:column>
+                </h:dataTable>
  </h:form>
 </h:body>
 </html>
